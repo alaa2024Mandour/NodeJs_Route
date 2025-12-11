@@ -1,0 +1,86 @@
+Q.B ::
+
+1. What is the difference between forEach and for...of? When would you use each? 
+//------ forEach  --------//
+  - Use forEach when you don’t need to wait for async code.
+  - like 👇
+	if we iterate over a list from an API or from network to collect data for elements in this list 
+	for each dosen't wait to get these data 
+
+
+//------ for...of  --------//
+
+  - Use for...of when you need await inside the loop. 
+  - like 👇
+	if we iterate over a  list from API or from network to collect data for elements in this list 
+	for..of  waits to get these data 
+
+
+
+//######################################################
+
+2. What is hoisting and what is the Temporal Dead Zone (TDZ)? Explain with examples.
+//----- hoisting  ------//
+  - hoisting is declaration detection or put the declaration at the top of the scope
+  - like ==> if you declare a variabel in line 5 and try to call it in line 4 the editor could see it 
+
+ - Examples 👇
+	Console.log(x) // undefined
+	var x = 10
+
+	console.log(y) //Cannot access 'y' before initialization
+	let y = 2;
+
+
+	console.log(z) // Cannot access 'z' before initialization
+	let z = 2;
+
+//-------- TDZ --------//
+  - The Temporal Dead Zone refers to the period between the entering of a scope and the actual declaration of a variable using let or const.
+     you can't access let or const variabels befor it's declaration 
+
+
+
+
+//######################################################
+
+3. What are the main differences between == and ===? 
+//------ (==) -------//
+  - It compares only the value and does type coercion if the types are different
+
+
+//------ (===) -------//
+  - It compares both the value and the type
+
+
+
+
+//######################################################
+4. Explain how try-catch works and why it is important in async operations.
+
+  - try catch statement is used to handle errors
+  - like 👇
+  - try block contains the code that might throw an error , if no error occurs try block will executed, else there is an error catch block will executed
+
+
+
+//######################################################
+
+5. What’s the difference between type conversion and coercion? Provide examples of each.
+  - both convert data type to another one.
+
+//-------- type conversion -----------//  
+  - performed manually by the programmer.
+  - uses built-in Js methods like Number(), String(), and Boolean().
+  - Example 👇
+	 let str = "123" ;
+	 let num = Number(str)
+	 console.log(typeof(num));  //number
+
+//-------- type coercion -----------//
+  -performed automatically by JavaScript.
+  - it happens during operations like comparison 
+  - Example 👇   
+	console.log("5" == 5); //true  //JS convert one of them to the other one type
+	
+
