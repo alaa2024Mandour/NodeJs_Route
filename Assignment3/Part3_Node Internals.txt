@@ -1,0 +1,57 @@
+1. What is the Node.js Event Loop? 
+Answer >> - A mechanism that allows Node.js to perform non-blocking I/O by offloading operations. 
+	- The event loop is the heart of Node.js. 
+	- It enables non-blocking I/O by processing callbacks and managing the execution of asynchronous operations.
+
+
+
+
+
+//-----------------------------------------
+2. What is Libuv and What Role Does It Play in Node.js? 
+Answer >> - it is a c library it holds the event loop operation 
+	  - Node.js uses Libuv, a C library that handles the event loop and I/O.
+	  - If the operation is non-blocking (like reading a file, network requests, DB access), Libuv handles it outside the main thread.
+
+
+
+
+//-----------------------------------------
+3. How Does Node.js Handle Asynchronous Operations Under the Hood? 
+Answer >> 1-Incoming requests from users
+	  2-All incoming requests are pushed to the Event Queue.
+ 	  3-The Event Loop continuously checks the event queue ,If the queue is not empty, it picks a request and processes it.
+	  4-If the operation is non-blocking libuv handles it outside the main thread.
+	  5-else the event loop will push the request to thread pool. 
+	  6- Once the operation completes the result and its callback are pushed back to the Event Queue.
+	  7-After the callback executes, Node.js sends the response back to the client.
+
+
+//-----------------------------------------
+4. What is the Difference Between the Call Stack, Event Queue, and Event Loop in Node.js? 
+Answer >>
+	- Call Stack >>  - Executes synchronous code   <<(معرفتهاش بصراحه عمل عنها سيبرش و اللي فهمته انها مكان في الميموري بتنفذ الفنكشنز بتريب التنفيذ بتاعها و لما بتخلفص فنكشن بتمسحها   )
+			 - Functions are added when called and removed when finished 
+			 - Runs one function at a time
+
+	- Event Queue >> it is a queue holds the requests in first in first out way , 
+			Each request includes a callback function that should be executed after the operation is complete 
+
+	- Event Loop  >> - it continuously checks the Event Queue.
+			- If the queue is not empty, it picks a request and processes it.
+
+
+
+//-----------------------------------------
+5. What is the Node.js Thread Pool and How to Set the Thread Pool Size? 
+Answer >> - it is a versual threads handeled by libuv ,  it has four threads by default.
+	  - you can edit threads number by >> UV_THREADPOOL_SIZE environment 
+
+
+
+
+//-----------------------------------------
+6. How Does Node.js Handle Blocking and Non-Blocking Code Execution? 
+Answer >> 
+	- Blocking >>Some operations (like file system access, DNS lookups, compression) are offloaded to Libuv’s internal thread pool (backed by OS-level threads).
+	- Non_Blocking >> If the operation is non-blocking (like reading a file, network requests, DB access), Libuv handles it outside the main thread.
