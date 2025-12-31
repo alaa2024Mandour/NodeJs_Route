@@ -124,6 +124,11 @@ app.get("/users/:Id",(req,res,next)=>{
     return res.status(200).json({Message:"Done",userExist});
 });
 
+
+app.use("{/*demo}",(req,res,next)=>{
+    res.status(404).json({message:"404 Oops ... Page Not Fount .."}) 
+})
+
 app.listen(port,()=>{
     console.log("server is running now ...");
 })
